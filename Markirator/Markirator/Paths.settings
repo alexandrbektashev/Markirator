@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Markirator" GeneratedClassName="Paths">
+  <Profiles />
+  <Settings>
+    <Setting Name="FilesFolderPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\Александр\Markirator Files</Value>
+    </Setting>
+    <Setting Name="DataFolderPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\Александр\Markirator Files\Data</Value>
+    </Setting>
+    <Setting Name="TablesFolderPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\Александр\Markirator Files\Tables</Value>
+    </Setting>
+    <Setting Name="ResultFolderPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\Александр\Markirator Files\Result</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

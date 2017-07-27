@@ -1,0 +1,9 @@
+C:\Users\Александр\Programms\Markirator\Markirator\bin\Debug\Markirator.exe.config
+C:\Users\Александр\Programms\Markirator\Markirator\bin\Debug\Markirator.exe
+C:\Users\Александр\Programms\Markirator\Markirator\bin\Debug\Markirator.pdb
+C:\Users\Александр\Programms\Markirator\Markirator\obj\Debug\Markirator.csprojResolveAssemblyReference.cache
+C:\Users\Александр\Programms\Markirator\Markirator\obj\Debug\Markirator.Form1.resources
+C:\Users\Александр\Programms\Markirator\Markirator\obj\Debug\Markirator.Properties.Resources.resources
+C:\Users\Александр\Programms\Markirator\Markirator\obj\Debug\Markirator.csproj.GenerateResource.Cache
+C:\Users\Александр\Programms\Markirator\Markirator\obj\Debug\Markirator.exe
+C:\Users\Александр\Programms\Markirator\Markirator\obj\Debug\Markirator.pdb
