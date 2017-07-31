@@ -23,51 +23,39 @@ namespace Markirator {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Александр\\Markirator Files")]
         public string FilesFolderPath {
             get {
                 return ((string)(this["FilesFolderPath"]));
             }
-            set {
-                this["FilesFolderPath"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Александр\\Markirator Files\\Data")]
         public string DataFolderPath {
             get {
                 return ((string)(this["DataFolderPath"]));
             }
-            set {
-                this["DataFolderPath"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Александр\\Markirator Files\\Tables")]
         public string TablesFolderPath {
             get {
                 return ((string)(this["TablesFolderPath"]));
             }
-            set {
-                this["TablesFolderPath"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Александр\\Markirator Files\\Result")]
         public string ResultFolderPath {
             get {
                 return ((string)(this["ResultFolderPath"]));
-            }
-            set {
-                this["ResultFolderPath"] = value;
             }
         }
     }
