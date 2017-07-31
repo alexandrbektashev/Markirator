@@ -43,10 +43,27 @@ namespace Markirator
         {
             for (int k = 0; k < m.RowsCount; k++)
             {
-                
-                object[] par = { m.Num(k), m.Model(k), m.Type(k), m.FurType(k),m.FurColor(k),m.Size(k),m.IsPainted(k)};
+
+                object[] par = new object[8];
+
+                par[0] = m.Num(k);
+                par[2] = m.Model(k);
+                par[3] = m.Type(k);
+                par[4] = m.FurType(k);
+                par[5] = m.FurColor(k);
+                par[6] = IsChecked(m.IsPainted(k));
+                par[7] = m.Size(k);
+
+
                 dataGridView1.Rows.Insert(0, par);
+                
             }
+        }
+
+        private CheckState IsChecked(bool token)
+        {
+            if (token) return CheckState.Checked;
+            return CheckState.Unchecked;
         }
     }
 }
