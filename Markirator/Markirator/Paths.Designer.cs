@@ -58,5 +58,17 @@ namespace Markirator {
                 return ((string)(this["ResultFolderPath"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Александр\\Markirator Files\\Data\\FursInfo.mkr")]
+        public string FursInfoPath {
+            get {
+                return ((string)(this["FursInfoPath"]));
+            }
+            set {
+                this["FursInfoPath"] = value;
+            }
+        }
     }
 }

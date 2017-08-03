@@ -12,8 +12,7 @@ namespace Markirator
     class Mkr
     {
         private string _path;
-        private int _rowsCount;
-        private int _columnsCount;
+        private const int _columnsCount = 7;
         private bool _isOK = true;
         private Exception _ex;
 
@@ -24,6 +23,9 @@ namespace Markirator
         private List<string> _furColor;
         private List<int> _size;
         private List<bool> _isPainted;
+
+        // класс, содержащий информацию и необходимые данные
+        //    о маркируемых шубах в данный момент
 
 
         public Mkr()
@@ -53,7 +55,7 @@ namespace Markirator
 
                 if (!File.Exists(path))
                 {
-                    StreamWriter sw = new StreamWriter(path);
+                    StreamWriter sw = new StreamWriter(path, false, Encoding.Unicode);
                     sw.Close();
                 }
                 StreamReader sr = new StreamReader(path);
@@ -80,8 +82,6 @@ namespace Markirator
 
                     c++;
                 }
-                _rowsCount = c;
-                _columnsCount = 7;
 
                 sr.Close();
 
@@ -166,6 +166,23 @@ namespace Markirator
             else
                 _isPainted[i] = t;
         }
+        public void IsPainted(int i, string t)
+        {
+            t.ToUpper();
+            bool rly = false;
+            if (
+                (t == "ДА") ||
+                (t == "КРАШЕНЫЙ") ||
+                (t == "КРАШЕННЫЙ") ||
+                (t == "КРАШ") ||
+                (t == "КР")
+                )
+                rly = true;
+            if (_isPainted.Count <= i)
+                _isPainted.Add(rly);
+            else
+                _isPainted[i] = rly;
+        }
         public bool IsPainted(int i)
         {
             return _isPainted[i];
@@ -177,6 +194,25 @@ namespace Markirator
                 _size.Add(t);
             else
                 _size[i] = t;
+        }
+        public void Size(int i, string t)
+        {
+            bool check = false;
+            int res = 0;
+            if (_size.Count <= i)
+            {
+                check = (Int32.TryParse(t, out res));
+                if (check) _size.Add(res);
+                else _size.Add(0);
+            }
+            else
+            {
+                check = Int32.TryParse(t, out res);
+                if (check) _size.Add(res);
+                else _size[i]=0;
+            }
+
+
         }
         public int Size(int i)
         {
@@ -194,14 +230,68 @@ namespace Markirator
 
         public int RowsCount
         {
-            get { return _rowsCount; }
+            get { return _num.Count; }
         }
         public int ColumnsCount
         {
             get { return _columnsCount; }
         }
 
+        public object[] ObjRow(int i)
+        {
+            object[] par = new object[ColumnsCount+1]; //чтобы в первую колонку картиночка влезала
+            par[1] = Num(i);
+            par[2] = Model(i);
+            par[3] = Type(i);
+            par[4] = FurType(i);
+            par[5] = FurColor(i);
+            par[6] = IsPainted(i);
+            par[7] = Size(i);
+            return par;
 
+        }
+
+        public int Count
+        {
+            get { return _num.Count; }
+        }
+
+
+
+        public void SetNewRow(string token)
+        {
+            try
+            {
+                string[] buf = token.Split(' ');
+                string[] arr = new string[6];
+
+                int c = buf.Length;
+
+                for (int j = 5; j > c; j--)
+                    arr[j] = "";
+
+                int i = Count;
+                Num(i, i);
+
+                
+
+             
+                Model(i, arr[0]);
+                Type(i, arr[1]);
+                FurType(i, arr[2]);
+                FurColor(i, arr[3]);
+                IsPainted(i, arr[4]);
+                Size(i, arr[5]);
+
+
+
+            }
+            catch (Exception ex)
+            {
+                _isOK = false;
+                _ex = ex;
+            }
+        }
     }
 
 }

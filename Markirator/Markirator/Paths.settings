@@ -14,5 +14,8 @@
     <Setting Name="ResultFolderPath" Type="System.String" Scope="Application">
       <Value Profile="(Default)">C:\Users\Александр\Markirator Files\Result</Value>
     </Setting>
+    <Setting Name="FursInfoPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\Александр\Markirator Files\Data\FursInfo.mkr</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
