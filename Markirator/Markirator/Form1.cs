@@ -59,20 +59,18 @@ namespace Markirator
             for (int k = 0; k < m.RowsCount; k++)
             {
 
-                object[] par = new object[8];
-
-                par[1] = m.Num(k);
-                par[2] = m.Model(k);
-                par[3] = m.Type(k);
-                par[4] = m.FurType(k);
-                par[5] = m.FurColor(k);
-                par[6] = IsChecked(m.IsPainted(k));
-                par[7] = m.Size(k);
-
+                object[] par = m.ObjRow(k);
 
                 dataGridView1.Rows.Add(par);
                 
             }
+        }
+
+        private void AddLastRowMkr()
+        {
+
+            object[] par = m.ObjRow(m.RowsCount - 1);
+            dataGridView1.Rows.Add(par);
         }
 
         private CheckState IsChecked(bool token)
@@ -83,7 +81,7 @@ namespace Markirator
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            
+            m.Save();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -98,7 +96,8 @@ namespace Markirator
 
             m.SetNewRow(row);
             if (!m.IsOK) MessageBox.Show(m.Ex.Message, "Fuck!");
-            ShowMkr();
+           else AddLastRowMkr();
+            
         }
 
         private void btnAddRow_Click(object sender, EventArgs e)
@@ -113,6 +112,33 @@ namespace Markirator
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                AddRow(textBox1.Text);
+            }
+        }
+
+        private void btnAcceptChanges_Click(object sender, EventArgs e)
+        {
+
+        }
+
+     
+
+        private void dataGridView1_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            int ind = e.RowIndex;
+            m.RemoveRow(ind);
             
         }
     }

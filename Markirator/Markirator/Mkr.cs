@@ -70,15 +70,17 @@ namespace Markirator
                     string str = sr.ReadLine();
                     string[] arr = str.Split('#');
 
-                    //num model type ftype furcolor size ispainted
+                    //num model type ftype furcolor ispainted size 
 
-                    Num(c, Int16.Parse(arr[0]));
+
+
+                    Num(c, arr[0]);
                     Model(c, arr[1]);
                     Type(c,arr[2]);
                     FurType(c,arr[3]);
                     FurColor(c,arr[4]);
-                    Size(c,Int16.Parse(arr[5]));
-                    IsPainted(c,Boolean.Parse(arr[6]));
+                    IsPainted(c, arr[5]);
+                    Size(c, arr[6]);
 
                     c++;
                 }
@@ -102,6 +104,24 @@ namespace Markirator
                 _num.Add(t);
             else
             _num[i] = t;
+
+        }
+        public void Num(int i, string t)
+        {
+            bool check = false;
+            int res = 0;
+            if (_num.Count <= i)
+            {
+                check = (Int32.TryParse(t, out res));
+                if (check) _num.Add(res);
+                else _num.Add(-1);
+            }
+            else
+            {
+                check = Int32.TryParse(t, out res);
+                if (check) _num.Add(res);
+                else _num[i] = 0;
+            }
 
         }
         public int Num(int i)
@@ -168,14 +188,16 @@ namespace Markirator
         }
         public void IsPainted(int i, string t)
         {
-            t.ToUpper();
+            t = t.ToUpper();
             bool rly = false;
             if (
                 (t == "ДА") ||
                 (t == "КРАШЕНЫЙ") ||
                 (t == "КРАШЕННЫЙ") ||
                 (t == "КРАШ") ||
-                (t == "КР")
+                (t == "КР") ||
+                (t == "TRUE")
+
                 )
                 rly = true;
             if (_isPainted.Count <= i)
@@ -262,14 +284,15 @@ namespace Markirator
         {
             try
             {
+                token = token.ToUpper();
                 string[] buf = token.Split(' ');
                 string[] arr = new string[6];
 
                 int c = buf.Length;
-
-                for (int j = 5; j > c; j--)
+                
+                for (int j = 5; j >= c; j--)
                     arr[j] = "";
-
+                buf.CopyTo(arr, 0);
                 int i = Count;
                 Num(i, i);
 
@@ -291,6 +314,37 @@ namespace Markirator
                 _isOK = false;
                 _ex = ex;
             }
+        }
+
+        public void RemoveRow(int ind)
+        {
+            _num.RemoveRange(ind, 1);
+            _model.RemoveRange(ind, 1);
+            _type.RemoveRange(ind, 1);
+            _furType.RemoveRange(ind, 1);
+            _furColor.RemoveRange(ind, 1);
+            _isPainted.RemoveRange(ind, 1);
+            _size.RemoveRange(ind, 1);
+            ReCount();
+        }
+
+        private void ReCount()
+        {
+            for (int i = 0; i < _num.Count; i++)
+                _num[i] = i;
+        }
+
+        public void Save()
+        {
+            StreamWriter sw = new StreamWriter(_path);
+            string str = "";
+            for(int i = 0; i<Count;i++)
+            {
+                str = string.Format("{0}#{1}#{2}#{3}#{4}#{5}#{6}",
+                _num[i], _model[i], _type[i], _furType[i], _furColor[i], _isPainted[i], _size[i]);
+                sw.WriteLine(str);
+            }
+            sw.Close();
         }
     }
 

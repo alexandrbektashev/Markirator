@@ -49,6 +49,7 @@
             this.btnCreateMkr = new System.Windows.Forms.Button();
             this.btnOpenMkr = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnAcceptChanges = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -86,6 +87,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnAcceptChanges);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.btnSave);
             this.tabPage1.Controls.Add(this.dataGridView1);
@@ -142,6 +144,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(623, 486);
             this.dataGridView1.TabIndex = 6;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dataGridView1_RowsRemoved);
             // 
             // Column1OK
             // 
@@ -225,10 +228,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Enabled = false;
             this.textBox1.Location = new System.Drawing.Point(6, 35);
-            this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(545, 20);
             this.textBox1.TabIndex = 3;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
             // btnCreateMkr
             // 
@@ -259,6 +263,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnAcceptChanges
+            // 
+            this.btnAcceptChanges.Location = new System.Drawing.Point(342, 61);
+            this.btnAcceptChanges.Name = "btnAcceptChanges";
+            this.btnAcceptChanges.Size = new System.Drawing.Size(147, 23);
+            this.btnAcceptChanges.TabIndex = 9;
+            this.btnAcceptChanges.Text = "Применить изменения";
+            this.btnAcceptChanges.UseVisualStyleBackColor = true;
+            this.btnAcceptChanges.Click += new System.EventHandler(this.btnAcceptChanges_Click);
             // 
             // Form1
             // 
@@ -303,6 +317,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5FurColor;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Column7Painted;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8Size;
+        private System.Windows.Forms.Button btnAcceptChanges;
     }
 }
 
